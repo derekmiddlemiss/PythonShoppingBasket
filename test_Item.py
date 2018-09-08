@@ -20,3 +20,8 @@ def test_item_has_stock_code(dvd_SoaP):
 def test_item_added_to_stock_count(dvd_SoaP):
 	# this should be true given module scope for fixture, dvd_SoaP created only once per module
 	assert Item.get_stock_count_for_code(dvd_SoaP.stock_code) == 1
+
+def test_deleted_item_removed_from_stock_count(dvd_SoaP):
+	Item.remove_stock_item(dvd_SoaP)
+	assert Item.get_stock_count_for_code(dvd_SoaP.stock_code) == 0
+
