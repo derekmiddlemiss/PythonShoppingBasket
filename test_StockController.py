@@ -28,4 +28,11 @@ def test_can_instantiate_stockcontroller_one_item(stock_controller_one_item):
 def test_stock_count_correct_for_one_item(stock_controller_one_item, book):
 	assert stock_controller_one_item.get_stock_count_for_code(book.stock_code) == 1
 
+def test_stockcontroller_can_add_item(stock_controller_one_item, dvd):
+	stock_controller_one_item.add_stock_item(dvd)
+	assert stock_controller_one_item.get_stock_count_for_code(dvd.stock_code) == 1
+
+def test_stockcontroller_can_remove_item(stock_controller_one_item, book):
+	stock_controller_one_item.remove_stock_item(book)
+	assert stock_controller_one_item.get_stock_count_for_code(book.stock_code) == 0
 
