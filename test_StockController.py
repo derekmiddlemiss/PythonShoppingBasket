@@ -49,6 +49,12 @@ def test_stockcontroller_will_not_remove_object_without_stockcode(stock_controll
 
 def test_stockcontroller_will_not_remove_untracked_item(stock_controller_one_item, dvd):
 	stock_controller_one_item.remove_stock_item(dvd)
-	assert stock_controller_one_item.get_total_stock_count() == 1	
+	assert stock_controller_one_item.get_total_stock_count() == 1
+
+def test_empty_stockcontroller_will_not_remove_item(empty_stock_controller, dvd):
+	empty_stock_controller.remove_stock_item(dvd)
+	assert empty_stock_controller.get_total_stock_count() == 0
+
+
 
 
