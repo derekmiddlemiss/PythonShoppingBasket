@@ -36,3 +36,10 @@ def test_stockcontroller_can_remove_item(stock_controller_one_item, book):
 	stock_controller_one_item.remove_stock_item(book)
 	assert stock_controller_one_item.get_stock_count_for_code(book.stock_code) == 0
 
+def test_total_stock_count_for_one_item(stock_controller_one_item):
+	assert stock_controller_one_item.get_total_stock_count() == 1
+
+def test_stock_controller_will_not_add_object_without_stockcode(stock_controller_one_item):
+	stock_controller_one_item.add_stock_item("not_an_Item")
+	assert stock_controller_one_item.get_total_stock_count() == 1	
+

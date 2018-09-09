@@ -47,3 +47,10 @@ class StockController:
 			return self.stock_count[code]
 		else:
 			return 0
+
+	def get_total_stock_count(self):
+		total_count = 0
+		for key in self.stock_count.keys():
+			total_count += self.stock_count[key]
+		return total_count
+
