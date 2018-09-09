@@ -1,7 +1,10 @@
 class Basket:
 
-	def __init__(self, items = []):
-		self.items = items
+	def __init__(self, items = None):
+		if items == None:
+			self.items = []
+		else:
+			self.items = items
 
 	def is_item_in_basket(self, item):
 		return item in self.items
@@ -17,5 +20,16 @@ class Basket:
 
 	def empty_basket(self):
 		self.items = []
+
+	def get_total(self):
+		total = 0.
+		for item in self.items:
+			try:
+				total += item.price
+			except AttributeError:
+				return "Object " + str(item) + " in basket not an Item"
+		return total
+
+
 
 

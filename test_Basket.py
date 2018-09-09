@@ -46,7 +46,7 @@ def test_remove_item_in_basket(basket_one_item, book):
 	basket_one_item.remove_item(book)
 	assert basket_one_item.is_item_in_basket(book) == False
 
-def test_remove_item_not_in_basket(basket_one_item, dvd):
+def test_warn_when_try_remove_item_not_in_basket(basket_one_item, dvd):
 	return_message = basket_one_item.remove_item(dvd)
 	assert return_message == "Item not in basket"
 
@@ -54,6 +54,20 @@ def test_can_empty_basket(basket_two_items, book, dvd):
 	basket_two_items.empty_basket()
 	assert basket_two_items.is_item_in_basket(book) == False
 	assert basket_two_items.is_item_in_basket(dvd) == False
+
+def test_can_get_total_price(basket_two_items):
+	total = basket_two_items.get_total()
+	assert total == pytest.approx(18.98)
+
+def test_warn_when_try_get_total_non_Item_in_basket(basket_two_items):
+	basket_two_items.add_item("not_an_Item")
+	return_message = basket_two_items.get_total()
+	assert return_message == "Object not_an_Item in basket not an Item"
+
+def test_get_zero_total_for_empty_basket(empty_basket):
+	total = empty_basket.get_total()
+	assert total == pytest.approx(0.)
+
 
 
 
