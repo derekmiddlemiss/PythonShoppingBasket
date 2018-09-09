@@ -1,7 +1,7 @@
 class Basket:
 
 	def __init__(self, items = None):
-		if items == None:
+		if items is None:
 			self.items = []
 		else:
 			self.items = items
@@ -27,7 +27,7 @@ class Basket:
 			try:
 				total += item.price
 			except AttributeError:
-				return "Object " + str(item) + " in basket not an Item"
+				return "Object " + str(item) + " in basket has no price"
 		return total
 
 

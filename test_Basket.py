@@ -62,7 +62,7 @@ def test_can_get_total_price(basket_two_items):
 def test_warn_when_try_get_total_non_Item_in_basket(basket_two_items):
 	basket_two_items.add_item("not_an_Item")
 	return_message = basket_two_items.get_total()
-	assert return_message == "Object not_an_Item in basket not an Item"
+	assert return_message == "Object not_an_Item in basket has no price"
 
 def test_get_zero_total_for_empty_basket(empty_basket):
 	total = empty_basket.get_total()
