@@ -6,3 +6,7 @@ class Basket:
 	def is_item_in_basket(self, item):
 		return item in self.items
 
+	def add_item(self, item):
+		self.items.append(item)
+	
+
