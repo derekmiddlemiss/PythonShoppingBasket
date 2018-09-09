@@ -2,24 +2,24 @@ import pytest
 from Basket import Basket
 from Item import Item
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope = "function")
 def book():
 	return Item("Of Mice and Men", "Paperback, Of Mice and Men, Steinbeck", "book_OMaM_01", 8.99)
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope = "function")
 def dvd():
 	return Item("Fellowship of the Ring", "Lord of the Rings, Fellowship of the Ring", "DVD_FotR_1", 9.99)
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope = "function")
 def empty_basket():
 	return Basket()
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope = "function")
 def basket_one_item(book):
 	items = [book]
 	return Basket(items)
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope = "function")
 def basket_two_items(book, dvd):
 	items = [book, dvd]
 	return Basket(items)
