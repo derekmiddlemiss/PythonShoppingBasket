@@ -12,10 +12,8 @@ class StockController:
 	def __init__(self, items = None):
 		self.stock_count = {}
 		if items is not None:
-			messages = []
 			for item in items:
-				messages.append(self.add_stock_item(item))
-			return messages
+				self.add_stock_item(item)
 
 	def add_stock_item(self, item):
 		code = StockController.get_stock_code_from_item(item)
@@ -24,8 +22,9 @@ class StockController:
 				self.stock_count[code] = 1
 			else:
 				self.stock_count[code] += 1
-			return "Item added"
-		return "Item not added"
+		else:
+			print("Object not added")
+
 
 	def remove_stock_item(self, item):
 		code = StockController.get_stock_code_from_item(item)
@@ -37,8 +36,11 @@ class StockController:
 				else:
 					# Last item with this code removed, remove code from dict
 					self.stock_count.pop(code)
-				return "Item removed"
-		return "Item not removed"
+			else:
+				print("Item not in stock count")
+		else:
+			print("Object not removed")
+
 
 	def get_stock_count_for_code(self, code):
 		if code in self.stock_count:

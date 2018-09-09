@@ -1,4 +1,5 @@
 from StockController import StockController
+from Item import Item
 import pytest
 
 @pytest.fixture(scope = "function")
@@ -10,9 +11,21 @@ def dvd():
 	return Item("Fellowship of the Ring", "Lord of the Rings, Fellowship of the Ring", "DVD_FotR_1", 9.99) 
 
 @pytest.fixture(scope = "function")
-def empty_StockController():
+def empty_stock_controller():
 	return StockController()
 
-def test_can_instantiate_stockcontroller(empty_StockController):
-	assert empty_StockController
+@pytest.fixture(scope = "function")
+def stock_controller_one_item(book):
+	items = [book]
+	return StockController(items)
+
+def test_can_instantiate_stockcontroller(empty_stock_controller):
+	assert empty_stock_controller
+
+def test_can_instantiate_stockcontroller_one_item(stock_controller_one_item):
+	assert stock_controller_one_item
+
+def test_stock_count_correct_for_one_item(stock_controller_one_item, book):
+	assert stock_controller_one_item.get_stock_count_for_code(book.stock_code) == 1
+
 
