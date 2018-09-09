@@ -1,6 +1,8 @@
 class Basket:
 
-	items = []
+	def __init__(self, items = []):
+		self.items = items
 
-	def __init__(self):
-		pass
+	def is_item_in_basket(self, item):
+		return item in self.items
+
