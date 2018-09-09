@@ -15,4 +15,7 @@ class Basket:
 		except ValueError:
 			return "Item not in basket"
 
+	def empty_basket(self):
+		self.items = []
+
 

@@ -50,5 +50,10 @@ def test_remove_item_not_in_basket(basket_one_item, dvd):
 	return_message = basket_one_item.remove_item(dvd)
 	assert return_message == "Item not in basket"
 
+def test_can_empty_basket(basket_two_items, book, dvd):
+	basket_two_items.empty_basket()
+	assert basket_two_items.is_item_in_basket(book) == False
+	assert basket_two_items.is_item_in_basket(dvd) == False
+
 
 
