@@ -1,4 +1,4 @@
-class Item():
+class Item:
 
 	__stock_count = {}
 
