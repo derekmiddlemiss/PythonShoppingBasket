@@ -39,7 +39,16 @@ def test_stockcontroller_can_remove_item(stock_controller_one_item, book):
 def test_total_stock_count_for_one_item(stock_controller_one_item):
 	assert stock_controller_one_item.get_total_stock_count() == 1
 
-def test_stock_controller_will_not_add_object_without_stockcode(stock_controller_one_item):
+def test_stockcontroller_will_not_add_object_without_stockcode(stock_controller_one_item):
 	stock_controller_one_item.add_stock_item("not_an_Item")
+	assert stock_controller_one_item.get_total_stock_count() == 1
+
+def test_stockcontroller_will_not_remove_object_without_stockcode(stock_controller_one_item):
+	stock_controller_one_item.remove_stock_item("not_an_Item")
 	assert stock_controller_one_item.get_total_stock_count() == 1	
+
+def test_stockcontroller_will_not_remove_untracked_item(stock_controller_one_item, dvd):
+	stock_controller_one_item.remove_stock_item(dvd)
+	assert stock_controller_one_item.get_total_stock_count() == 1	
+
 
