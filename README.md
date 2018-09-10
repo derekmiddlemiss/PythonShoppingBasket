@@ -1,9 +1,12 @@
 # PythonShoppingBasket
 
-Tested on Python 3.6.5. The pytest module is required. Run tests with command <br/>
+Requirements:<br/>
+pip install pytest
+<br/>
+Tested on Python 3.6. Issue <br/>
 <br/>
 pytest -s -v <br/>
 <br/>
-in this directory
+in base directory to run tests.
 
 

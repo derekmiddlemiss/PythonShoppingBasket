@@ -29,20 +29,20 @@ class StockController:
 	def remove_stock_item(self, item):
 		code = StockController.get_stock_code_from_item(item)
 		if code is not None: 
-			if code in self.stock_count:
+			try:
 				self.stock_count[code] -= 1
 				if self.stock_count[code] == 0:
 					self.stock_count.pop(code)
-			else:
+			except KeyError:
 				print("Item not in stock count")
 		else:
 			print("Object " + str(item) + " not removed")
 
 
 	def get_stock_count_for_code(self, code):
-		if code in self.stock_count:
+		try:
 			return self.stock_count[code]
-		else:
+		except KeyError:
 			return 0
 
 	def get_total_stock_count(self):
