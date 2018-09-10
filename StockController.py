@@ -23,23 +23,20 @@ class StockController:
 			else:
 				self.stock_count[code] += 1
 		else:
-			print("Object not added")
+			print("Object " + str(item) + " not added")
 
 
 	def remove_stock_item(self, item):
 		code = StockController.get_stock_code_from_item(item)
 		if code is not None: 
 			if code in self.stock_count:
-				if self.stock_count[code] > 1:
-					# Reduce count by 1, but there are still remaining items with this code
-					self.stock_count[code] -= 1
-				else:
-					# Last item with this code removed, remove code from dict
+				self.stock_count[code] -= 1
+				if self.stock_count[code] == 0:
 					self.stock_count.pop(code)
 			else:
 				print("Item not in stock count")
 		else:
-			print("Object not removed")
+			print("Object " + str(item) + " not removed")
 
 
 	def get_stock_count_for_code(self, code):
